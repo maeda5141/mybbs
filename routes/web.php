@@ -20,3 +20,6 @@ Route::patch('/threads/{thread}', 'ThreadsController@update');
 Route::delete('/threads/{thread}', 'ThreadsController@destroy');
 
 Route::post('/threads/{thread}/comments', 'CommentsController@store');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

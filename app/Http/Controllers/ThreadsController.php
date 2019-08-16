@@ -11,6 +11,9 @@ use App\Http\Requests\ThreadRequest;
 class ThreadsController extends Controller
 {
     //
+    public function __construct(){
+        $this->middleware('auth')->except('index', 'show');
+      }
     public function index () {
         $threads = Thread::latest()->get();
         return view('Threads.index')->with('threads', $threads);
@@ -19,7 +22,7 @@ class ThreadsController extends Controller
         return view('Threads.show')->with('thread', $thread);
     }
     public function create () {
-        
+        $this->middleware('auth');
         return view('Threads.create');
     }
     public function store (ThreadRequest $request) {

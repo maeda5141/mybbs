@@ -1,6 +1,7 @@
 html, body {
   width: 100%;
-  background-attachment: #ccc;
+  background: #eee;
+  margin: 0;
 }
 
 h1 {
@@ -34,6 +35,13 @@ li {
   padding: 15px;
   background: #eee;
   border-bottom: 1px solid #aaa;
+}
+
+.auth-information {
+  background: white;
+  font-size: 14px;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
 .container {
@@ -156,4 +164,8 @@ input[type="submit"] {
 .comment-created_at {
   font-size: 13px;
   color: #333;
+}
+
+#logout {
+  display: inline-block;
 }
