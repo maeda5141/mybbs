@@ -21,6 +21,9 @@
   @endif
   <textarea name="body" placeholder="スレッドの説明、趣旨を入力してください">{{ old('body') }}</textarea>
   </p>
+  <p>
+  <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+  </p>
   <p class="submit"><input type="submit" value="作成"></p>
   </form>
 

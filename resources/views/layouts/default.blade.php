@@ -9,12 +9,15 @@
 </head>
 <body>
   <div class="auth-information">
+  @if(!Auth::check())
   <a href="/register">新規登録</a>
   <a href="/login">ログイン</a>
+  @else
   <a href="#" id="logoutLabel">ログアウト</a>
   <form method="post" action="/logout" id="logout">
       {{ csrf_field() }}
   </form>
+  @endif
   @if(Auth::check())
   <span>{{ Auth::user()->name }}さん</span>
   @else

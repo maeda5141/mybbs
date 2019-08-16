@@ -8,12 +8,13 @@
     <h2>{{ $thread->title }}</h2>
     <div class="submit-data">
       <div class="created_at">{{ $thread->created_at}}</div>
-      <div class="user-name">投稿者: 太郎</div>
+      <div class="user-name">投稿者: {{ $thread->user->name }}</div>
     </div>
   </header>
   <div class="body">
   {!! nl2br(  e($thread->body) )!!}
   </div>
+    @if( Auth::check() && Auth::user()->id === $thread->user->id )
     <div class="buttons">
       <p><a href="{{ action('ThreadsController@edit', $thread) }}" class="edit-thread">[編集]</a></p>
       <p><a href="#" class="remove-thread" data-id="{{$thread->id}}">[削除]</a></p>
@@ -22,6 +23,7 @@
       {{ method_field('delete') }}
       </form>
     </div>
+    @endif
   <div class="comment-header">返信({{ $thread->comments()->count() }})</div>
   <ul class="comments-area">
     @forelse( $thread->comments as $comment)

@@ -22,7 +22,6 @@ class ThreadsController extends Controller
         return view('Threads.show')->with('thread', $thread);
     }
     public function create () {
-        $this->middleware('auth');
         return view('Threads.create');
     }
     public function store (ThreadRequest $request) {
@@ -33,6 +32,7 @@ class ThreadsController extends Controller
         $thread = new Thread();
         $thread->title = $request->title;
         $thread->body = $request->body;
+        $thread->user_id = $request->user_id;
         $thread->save();
         return redirect('/');
     }
