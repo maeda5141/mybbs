@@ -29,8 +29,8 @@
     @forelse( $thread->comments as $comment)
   <li class="comments-area__comment">
   <p class="comment-submit-data">
-    <span class="comment-id">{{ $comment->id }}:</span>
-    <span class="comment-user-name">名無しさん</span>
+    <span class="comment-id">{{ $loop->iteration }}:</span>
+    <span class="comment-user-name">{{ $comment->user->name}}</span>
     <span class="comment-created_at">{{ $comment->created_at }}</span>
   </p>
   <p>{!! nl2br(e($comment->body)) !!}</p>
@@ -41,14 +41,19 @@
   </li>
   @endforelse
   </ul>
-  <form method="post" action="{{ action('CommentsController@store', $thread) }}">
-  {{ csrf_field() }}
-  <p>
-  @if($errors->has('body'))
-  <p class="error">{{$errors->first('body')}}</p>
+  @if( Auth::check())
+    <form method="post" action="{{ action('CommentsController@store', $thread) }}">
+    {{ csrf_field() }}
+    <p>
+    @if($errors->has('body'))
+    <p class="error">{{$errors->first('body')}}</p>
+    @endif
+    <textarea name="body" placeholder="スレッドへの返信を入力してください">{{ old('body') }}</textarea>
+    </p>
+    <p><input type="hidden" name="user_id" value="{{ Auth::user()->id }}"></p>
+    <p class="submit"><input type="submit"></p>
+    </form>
+  @else
+    <p>スレッドへの返信を投稿するには<a href="/login" style="color: blue">ログイン</a>が必要です。</p>
   @endif
-  <textarea name="body" placeholder="スレッドへの返信を入力してください">{{ old('body') }}</textarea>
-  </p>
-  <p class="submit"><input type="submit"></p>
-  </form>
 @endsection

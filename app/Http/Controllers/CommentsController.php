@@ -20,6 +20,7 @@ class CommentsController extends Controller
         ]);
         $comment = new Comment;
         $comment->body = $request->body;
+        $comment->user_id = $request->user_id;
         $thread->comments()->save($comment);
         return redirect()->action('ThreadsController@show', $thread);
     }
