@@ -26,7 +26,7 @@
   <!-- @if($errors->has('title'))
   <p class="error">{{$errors->first('title')}}</p>
   @endif -->
-  <label for="password">パスワード</label><input name="email" id="password" type="password" value="{{old('password', $user->password)}}">
+  <label for="password">パスワード</label><input name="password" id="password" type="password" value="{{old('password', $user->password)}}">
   </p>
   <p>
   <!-- @if($errors->has('title'))
@@ -35,7 +35,7 @@
   <label for="password-confirmation">確認用パスワード</label><input name="password-confirmation" id="password-confirmation" type="password" value="{{old('password-confirmation')}}">
   </p>
 
-  <p><input type="submit"></p>
+  <p><input type="submit" value="更新" class="update-submit"></p>
   </form>
 
 @endsection

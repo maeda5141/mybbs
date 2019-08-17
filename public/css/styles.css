@@ -179,3 +179,9 @@ input[type="submit"] {
   display: inline-block;
   width: 20%;
 }
+
+.update-user-form .update-submit {
+  display: block;
+  width: 30%;
+  margin: 0 auto;
+}
