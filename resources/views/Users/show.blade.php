@@ -4,8 +4,11 @@
 
 @section('contents')
   <header>
-    <p><a href="/" class="back-to-top">トップへ戻る</a></p>
-    <h1>{{ $user->name }}さんのページ</h1>
+    <p>
+    <a href="/" class="back-to-top">トップへ戻る</a>
+    <a href="{{ action('UsersController@edit', $user)}}" class="back-to-top">登録情報の編集</a>
+    </p>
+    <h2>{{ $user->name }}さんのページ</h2>
   </header>
   <p class="all-threads"> -- 掲示板一覧 -- </p>
   <ul>
