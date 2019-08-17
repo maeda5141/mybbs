@@ -1,32 +1,23 @@
-(function(){
+$(function () {
 
-'use strict';
-
-var remove = document.querySelector('.remove-thread');
-if (remove) {
-  remove.addEventListener('click', function (e) {
-    e.preventDefault;
-    var threadId = this.dataset.id;
-    if (confirm('削除しますか？')) {
-      
-      document.getElementById(threadId).submit();
-    }
-  });
-
-}
-
-var logout = document.querySelector('#logoutLabel');
-console.log('ok');
-
-if (logout) {
+  if ($('.remove-thread')) {
+    $('.remove-thread').on('click', function (e) {
+      e.preventDefault;
+      var threadId = $(this).data('id');
+      if (confirm('削除しますか？')) {
+        
+        $('#' + threadId).submit();
+      }
+    });
+  }
   
-  logout.addEventListener('click', function (e) {
-    e.preventDefault;
-    if (confirm('ログアウトしますか？')) {
-      
-      document.getElementById('logout').submit();
-    }
-  });
-}
-
-})();
+  if ($('#logoutLabel')) {
+    $('#logoutLabel').on('click', function (e) {
+      e.preventDefault;
+      if (confirm('ログアウトしますか？')) {
+        
+        $('#logout').submit();
+      }
+    });
+  }
+});
