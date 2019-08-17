@@ -19,7 +19,7 @@
   </form>
   @endif
   @if(Auth::check())
-  <span>{{ Auth::user()->name }}さん</span>
+  <span><a href="{{ url('/users', Auth::user()->id)}}">{{ Auth::user()->name }}さん</a></span>
   @else
   <span>名無しさん</span>
   @endif
