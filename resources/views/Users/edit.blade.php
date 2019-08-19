@@ -26,13 +26,13 @@
   <!-- @if($errors->has('title'))
   <p class="error">{{$errors->first('title')}}</p>
   @endif -->
-  <label for="password">パスワード</label><input name="password" id="password" type="password" value="{{old('password', $user->password)}}">
+  <label for="password">パスワード</label><input name="password" id="password" type="password" value="{{old('password')}}">
   </p>
   <p>
   <!-- @if($errors->has('title'))
   <p class="error">{{$errors->first('title')}}</p>
   @endif -->
-  <label for="password-confirmation">確認用パスワード</label><input name="password-confirmation" id="password-confirmation" type="password" value="{{old('password-confirmation')}}">
+  <!-- <label for="password_confirmation">確認用パスワード</label><input name="password_confirmation" id="password_confirmation" type="password" value="{{old('password_confirmation')}}"> -->
   </p>
 
   <p><input type="submit" value="更新" class="update-submit"></p>

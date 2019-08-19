@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\User;
+
+// use Illuminate\Contracts\Encryption\DecryptException;
+
 
 class UsersController extends Controller
 {
@@ -16,11 +20,21 @@ class UsersController extends Controller
         return view('Users.edit', ['user'=>$user]);
     }
     public function update( Request $request, User $user) {
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->save();
-        return redirect('/');
+        $this->validate($request, [
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+        if (Hash::make($request['password']) === $user->password) {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            // $user->password = Hash::make($request['password']);
+            $user->save();
+            return redirect('/');
+
+        } else {
+            return redirect()->back()->withInput();
+        }
     }
     //
 }
