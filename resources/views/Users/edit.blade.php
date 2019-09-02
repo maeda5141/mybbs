@@ -11,9 +11,9 @@
   {{ csrf_field() }}
   {{ method_field('patch') }}
   <p>
-  <!-- @if($errors->has('title'))
-  <p class="error">{{$errors->first('title')}}</p>
-  @endif -->
+  @if($errors->has('name'))
+  <p class="error">{{$errors->first('name')}}</p>
+  @endif
   <label for="name">名前</label><input name="name" id="name" type="text" value="{{old('name', $user->name)}}">
   </p>
   <p>

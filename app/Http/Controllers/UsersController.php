@@ -25,16 +25,11 @@ class UsersController extends Controller
             'email'=>'required',
             'password'=>'required'
         ]);
-        if (Hash::make($request['password']) === $user->password) {
             $user->name = $request->name;
             $user->email = $request->email;
-            // $user->password = Hash::make($request['password']);
+            $user->password = Hash::make($request['password']);
             $user->save();
             return redirect('/');
-
-        } else {
-            return redirect()->back()->withInput();
-        }
     }
     //
 }
